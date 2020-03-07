@@ -1,0 +1,88 @@
+@bg:75;
+* {
+    margin: 0;
+    padding: 0;
+}
+@media screen and (min-width: 750px) {
+    html {
+      font-size: 75px!important;
+    }
+}
+body {
+    width: 100%;
+    min-width: 320px;
+    font-size: 32rem / @bg!important;
+    color: #666666;
+  }
+.video {
+    width: 100%;
+    display: block;
+}
+.listBox {
+    padding: 0 10rem/@bg 0rem/@bg 10rem/@bg;
+}
+
+h4 {
+    height: 80rem/@bg;
+    line-height: 80rem/@bg;
+}
+
+ul {
+    list-style: none;
+    padding-left: 20rem/@bg;
+    border-top: #f3f3f3 1px solid;
+}
+
+li {
+    height: 100rem/@bg;
+    line-height: 100rem/@bg;
+    border-bottom: #f3f3f3 1px solid;
+}
+li::before {
+    content: '';
+    display: inline-block;
+    width: 44rem/@bg;
+    height: 44rem/@bg;
+    margin-right: 20rem/@bg;
+    margin-top: -6rem/@bg;
+    vertical-align: middle;
+    border: #ccc 1px solid;
+    border-radius: 50%;
+}
+.li-active {
+    color: #71e6cc;
+}
+.li-active::before {
+    content: '';
+    display: inline-block;
+    width: 48rem/@bg;
+    height: 48rem/@bg;
+    border: 0;
+    margin-right: 10rem/@bg;
+    margin-top: -6rem/@bg;
+    vertical-align: middle;
+    background-image: url(../images/stop.png);
+    background-size: 48rem/@bg;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+.video-box{
+    position: relative;
+    .video-img{
+        position: absolute;
+        display: block;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        width: 120rem/@bg;
+        height: 120rem/@bg;
+        z-index: 999;
+        background: url(../images/play.jpg) no-repeat;
+        background-size: 100% 100%;
+        border-radius: 50%;
+        cursor:pointer
+    }
+}

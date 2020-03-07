@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/flexible.js"></script>
+    <title>儿歌唱跳</title>
+</head>
+
+<body>
+    <header class="video-box">
+        <video class="video" preload="auto" poster="images/nurseryRhyme.png" controls src="http://cdn.www.hqkid.cn/live4/MV-dengguanquelou.mp4"></video>
+        <div class="video-img"></div>
+    </header>
+    <div class="listBox">
+        <h4>儿歌唱跳</h4>
+        <ul>
+            <li class="li-active" videoUrl="http://cdn.www.hqkid.cn/live4/MV-dengguanquelou.mp4">登鹳雀楼-唱跳</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-fudeguyuancaosongbie.mp4">赋得古原草送别-唱跳</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-gulangyuexing.mp4">古朗月行-唱跳</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV_hujiahuwei.mp4">狐假虎威-唱跳</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-hualongdianjing.mp4">画龙点睛-唱跳</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-mengmusanqian.mp4">孟母三迁-唱跳</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-wangyangbulao.mp4">亡羊补牢-唱跳</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-AppleandBanana.mp4">学前儿歌MV-Apple and Banana</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-BallandDoll.mp4">学前儿歌MV-Ball and Doll</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-BlueandRed.mp4">学前儿歌MV-Blue and Red</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-BrotherandSister.mp4">学前儿歌MV-Brother and Sister</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-CarandTrain.mp4">学前儿歌MV-Car and Train</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-EarandMouth.mp4">学前儿歌MV-Ear and Mouth</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-EyesandNose.mp4">学前儿歌MV-Eyes and Nose</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-HairandHead.mp4">学前儿歌MV-Hair and Head</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-HandsandFeet.mp4">学前儿歌MV-Hands and Feet</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-KittyandPiggy.mp4">学前儿歌MV-Kitty and Piggy</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-MommyandDaddy.mp4">学前儿歌MV-Mommy and Daddy</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-MorningandAfternoon.mp4">学前儿歌MV-Morning and Afternoon</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-PearandOrange.mp4">学前儿歌MV-Pear and Orange</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-PlumandPeach.mp4">学前儿歌MV-Plum and Peach</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-StrawberryandBlueberry.mp4">学前儿歌MV-Strawberry and Blueberry</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-YellowandGreen.mp4">学前儿歌MV-Yellow and Green</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-yonge.mp4">咏鹅-唱跳</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live4/MV-zuojingguantian.mp4">坐井观天-唱跳</li>
+        </ul>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var oUl = document.querySelector('.listBox');
+        var LI = document.querySelectorAll('li');
+        var video = document.querySelector('video')
+        var videoImg = document.querySelector('.video-img')
+        videoImg.onclick = function() {
+            videoImg.style.display = 'none';
+            video.play()
+        }
+        video.ontimeupdate = function() {
+            //false 点击了播放  true 点击了暂停  
+            if(video.paused === false) {
+                videoImg.style.display = 'none';
+            }
+            if(video.paused === true) {
+                videoImg.style.display = 'block';
+            }
+        }
+        oUl.onclick = function (ev) {
+            for (let index = 0; index < LI.length; index++) {
+                LI[index].style.color= '';
+                LI[index].className = ''
+            }
+            var ev = ev || window.event;
+            var oLi = ev.srcElement || ev.target;
+            if (oLi.nodeName.toLowerCase() == 'li') {
+                oLi.className = 'li-active'
+                video.setAttribute("src", oLi.attributes["videoUrl"].nodeValue)
+                video.play()
+            }
+        }
+    }
+</script>
+
+</html>

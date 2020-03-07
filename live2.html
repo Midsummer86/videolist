@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/flexible.js"></script>
+    <title>国学沉浸课堂</title>
+</head>
+
+<body>
+    <header class="video-box">
+        <video class="video" preload="auto" poster="images/chinese.png" controls src="http://cdn.www.hqkid.cn/live2/dengguanquelou.mp4"></video>
+        <div class="video-img"></div>
+    </header>
+    <div class="listBox">
+        <h4>国学沉浸课堂</h4>
+        <ul>
+            <li class="li-active" videoUrl="http://cdn.www.hqkid.cn/live2/dengguanquelou.mp4">登鹳雀楼</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live2/fudeguyuancaosongbie.mp4">赋得古原草送别</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live2/gulangyuexing.mp4">古朗月行</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live2/hualongdianjing.mp4">画龙点睛</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live2/hujiahuwei.mp4">狐假虎威</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live2/mengmusanqian.mp4">孟母三迁</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live2/wangyangbulao.mp4">亡羊补牢</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live2/yonge.mp4">咏鹅</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live2/zuojingguantian.mp4">坐井观天</li>
+        </ul>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var oUl = document.querySelector('.listBox');
+        var LI = document.querySelectorAll('li');
+        var video = document.querySelector('video')
+        var videoImg = document.querySelector('.video-img')
+        videoImg.onclick = function() {
+            videoImg.style.display = 'none';
+            video.play()
+        }
+        video.ontimeupdate = function() {
+            //false 点击了播放  true 点击了暂停  
+            if(video.paused === false) {
+                videoImg.style.display = 'none';
+            }
+            if(video.paused === true) {
+                videoImg.style.display = 'block';
+            }
+        }
+        oUl.onclick = function (ev) {
+            for (let index = 0; index < LI.length; index++) {
+                LI[index].style.color= '';
+                LI[index].className = ''
+            }
+            var ev = ev || window.event;
+            var oLi = ev.srcElement || ev.target;
+            if (oLi.nodeName.toLowerCase() == 'li') {
+                oLi.className = 'li-active'
+                video.setAttribute("src", oLi.attributes["videoUrl"].nodeValue)
+                video.play()
+            }
+        }
+    }
+</script>
+
+</html>

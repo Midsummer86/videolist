@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/flexible.js"></script>
+    <title>英语沉浸课堂</title>
+</head>
+
+<body>
+    <header class="video-box">
+        <video class="video" preload="auto" poster="images/english.png" controls src="http://cdn.www.hqkid.cn/live3/day1-FindingParents.mp4"></video>
+        <div class="video-img"></div>
+    </header>
+    <div class="listBox">
+        <h4>英语沉浸课堂</h4>
+        <ul>
+            <li class="li-active" videoUrl="http://cdn.www.hqkid.cn/live3/day1-FindingParents.mp4">day1-Finding_Parents</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day2-brotherandsister.mp4">day2-brother and sister</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day3-FindingFriends.mp4">day3-Finding Friends</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day4-MorningandAfternoon.mp4">day4-Morning and Afternoon</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day5-DrawingaPicture.mp4">day5-Drawing a Picture</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day6-EarandMouth.mp4">day6-Ear and Mouth</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day7-buildingasnowman.mp4">day7-building a snowman</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day8-HairStyle.mp4">day8-Hair Style</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day9-ballanddoll.mp4">day9-ball and doll</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day10-magicshow.mp4">day10-magic show</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day11-WhoisFast.mp4">day11-Who is Fast</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day12-RedandBlue.mp4">day12-Red and Blue</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day13-guessingfruit.mp4">day13-guessing fruit</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day14-PickingFruits.mp4">day14-Picking Fruits</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day15-plumandpeach.mp4">day15-plum and peach</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day16-FruitsConveyor.mp4">day16-Fruits Conveyor</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day17-BuyingClothes.mp4">day17-Buying Clothes</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day18-HipposEatingApples.mp4">day18-Hippos Eating Apples</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day19-oneandtwo.mp4">day19-one and two</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day20-threeandfour.mp4">day20-three and four</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day21-magicpen.mp4">day21-magic pen</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day22-PaintingWalls.mp4">day22-Painting Walls</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day23-doorandTV.mp4">day23-door and TV</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day24-ChairandBed.mp4">day24-Chair and Bed</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day25ThreeCakes.mp4">day25-Three Cakes</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day26-happybirthday.mp4">day26-happy birthday</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day27-happyandsad.mp4">day27-happy and sad</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day28-MilkandJuice.mp4">day28-Milk and Juice</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day29-morningawakingtime.mp4">day29-morning awaking time</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day30-BrushingTeeth.mp4">day30-Brushing Teeth</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day31-WashingFace.mp4">day31-Washing Face</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live3/day32-MagicRoadtoSchool.mp4">day32-Magic Road to School</li>
+        </ul>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var oUl = document.querySelector('.listBox');
+        var LI = document.querySelectorAll('li');
+        var video = document.querySelector('video')
+        var videoImg = document.querySelector('.video-img')
+        videoImg.onclick = function() {
+            videoImg.style.display = 'none';
+            video.play()
+        }
+        video.ontimeupdate = function() {
+            //false 点击了播放  true 点击了暂停  
+            if(video.paused === false) {
+                videoImg.style.display = 'none';
+            }
+            if(video.paused === true) {
+                videoImg.style.display = 'block';
+            }
+        }
+        oUl.onclick = function (ev) {
+            for (let index = 0; index < LI.length; index++) {
+                LI[index].style.color= '';
+                LI[index].className = ''
+            }
+            var ev = ev || window.event;
+            var oLi = ev.srcElement || ev.target;
+            if (oLi.nodeName.toLowerCase() == 'li') {
+                oLi.className = 'li-active'
+                video.setAttribute("src", oLi.attributes["videoUrl"].nodeValue)
+                video.play()
+            }
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/flexible.js"></script>
+    <title>创想绘画</title>
+</head>
+
+<body>
+    <header class="video-box">
+        <video class="video" preload="auto" poster="images/painting.png" controls src="http://cdn.www.hqkid.cn/live5/aifeiertieta-xiatian.mp4"></video>
+        <div class="video-img"></div>
+    </header>
+    <div class="listBox">
+        <h4>创想绘画</h4>
+        <ul>
+            <li class="li-active" videoUrl="http://cdn.www.hqkid.cn/live5/aifeiertieta-xiatian.mp4">埃菲尔铁塔-夏天</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/caibi.mp4">彩笔</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/caihongtianti1.mp4">彩虹天梯1</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/caihongtianti2.mp4">彩虹天梯2</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/chong.mp4">虫</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/chuangxianghuihua.mp4">创想绘画</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/heiheijingling.mp4">黑黑精灵</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/qingting.mp4">蜻蜓</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/shu.mp4">树</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/taiyang.mp4">太阳</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/tianbianpaiolaiyiduoyun.mp4">天边飘来一朵云</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/tiantianquan.mp4">甜甜圈</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/xiaoniao.mp4">小鸟</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/xingqiu.mp4">星球</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/bingqiling.mp4">冰激凌</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/fanchuan.mp4">帆船</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/fushishan.mp4">富士山</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/hetang.mp4">荷塘</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/miaoyongshuicai-huahudie.mp4">妙用水彩--花蝴蝶</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/niyansuyu-xiaoxiaoshougong.mp4">泥言塑语—小小手工</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/tangguo.mp4">糖果</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/xiandesanbu-niao.mp4">线代散步——鸟</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/xiandesanbu-xiaohua.mp4">线的散步——小花</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/xiandesanbu-changjinglu.mp4">线的散步-长颈鹿</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/xiaolaoshu.mp4">小老鼠</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/xiaoxiongpangdudu.mp4">小熊胖嘟嘟</li>
+            <li videoUrl="http://cdn.www.hqkid.cn/live5/yidakou.mp4">一大口</li>
+        </ul>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var oUl = document.querySelector('.listBox');
+        var LI = document.querySelectorAll('li');
+        var video = document.querySelector('video')
+        var videoImg = document.querySelector('.video-img')
+        videoImg.onclick = function() {
+            videoImg.style.display = 'none';
+            video.play()
+        }
+        video.ontimeupdate = function() {
+            //false 点击了播放  true 点击了暂停  
+            if(video.paused === false) {
+                videoImg.style.display = 'none';
+            }
+            if(video.paused === true) {
+                videoImg.style.display = 'block';
+            }
+        }
+        oUl.onclick = function (ev) {
+            for (let index = 0; index < LI.length; index++) {
+                LI[index].style.color= '';
+                LI[index].className = ''
+            }
+            var ev = ev || window.event;
+            var oLi = ev.srcElement || ev.target;
+            if (oLi.nodeName.toLowerCase() == 'li') {
+                oLi.className = 'li-active'
+                video.setAttribute("src", oLi.attributes["videoUrl"].nodeValue)
+                video.play()
+            }
+        }
+    }
+</script>
+
+</html>
