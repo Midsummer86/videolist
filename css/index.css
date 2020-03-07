@@ -20,10 +20,6 @@ body {
 .listBox {
   padding: 0 0.13333333rem 0rem 0.13333333rem;
 }
-h4 {
-  height: 1.06666667rem;
-  line-height: 1.06666667rem;
-}
 ul {
   list-style: none;
   padding-left: 0.26666667rem;
@@ -82,13 +78,7 @@ li::before {
   border-radius: 50%;
   cursor: pointer;
 }
-
 *::-webkit-media-controls-start-playback-button {
-  display: none ;
+  display: none!important;
   -webkit-appearance: none;
 }
-
-/* *::-webkit-media-controls-play-button {
-  display: none ;
-  -webkit-appearance: none;
-} */
